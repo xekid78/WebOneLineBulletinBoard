@@ -28,6 +28,6 @@ try {
     exit;
 }
 
-// $sql = "SELECT * FROM bbs ORDER BY updated_at;";
-// $stmt = $pdo->prepare($sql);
-// $stmt -> execute();
+$sql = "SELECT * FROM bbs ORDER BY updated_at;";
+$stmt = $pdo->prepare($sql);
+$stmt -> execute();

@@ -28,5 +28,21 @@
   <!-- DB接続 -->
   <?php require('php/pdo.php'); ?>
 
+  <table class="table">
+  <tr><th>日時</th><th>投稿内容</th></tr>
+  <?php
+  while ($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+  ?>
+      <tr>
+      <td><?php echo "$row[updated_at]"; ?></td>
+      <td><?php echo "$row[content]"; ?></td>
+      </tr>
+  <?php
+  }
+  ?>
+  </table>
+  </div>
+  </div>
+
 </body>
 </html>
