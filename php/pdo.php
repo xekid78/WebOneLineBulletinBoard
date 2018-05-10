@@ -14,20 +14,21 @@ try {
 }
 
 // 入力データ
+$user_name = $_POST["user_name"];
 $content = $_POST["content"];
+$delete_id = $_POST["delete_id"];
 
 // DB挿入
-try {
-    $sql  = "INSERT INTO bbs (content, updated_at) VALUES (?, ?);";
-    $stmt = $pdo->prepare($sql);
-    // $stmt->bindParam(":content", $content, PDO::PARAM_STR);
-    $stmt->execute([$content, date("Y/m/d H:i:s")]);
-    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo $e->getMessage();
-    exit;
-}
+$sql  = "INSERT INTO bbs (user_name, content, updated_at) VALUES (?, ?, ?);";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_name, $content, date("Y/m/d H:i:s")]);
 
+// DB削除
+// $sql = "DELETE FROM bbs WHERE id = delete_id;";
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute();
+
+// DB取得
 $sql = "SELECT * FROM bbs ORDER BY updated_at;";
 $stmt = $pdo->prepare($sql);
-$stmt -> execute();
+$stmt->execute();
